@@ -1,4 +1,10 @@
 import Fastify from 'fastify';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient({
+    // A prop abaixa me mostra todos os loggs(acontecimentos) das minhas querys
+    log: ['query'],
+});
 
 // Essa função será a primeira a ser chamada. Comumente chamada bootstrap.
 async function bootstrap() {
@@ -10,8 +16,10 @@ async function bootstrap() {
     });
 
     // Abaixo criarei as rotas
-    fastify.get('/pools/count', () => {
-        return { count: 0 };
+    fastify.get('/pools/count', async () => {
+        // O prisma já me mostra as minhas tabelas
+        const getAllPools = await prisma.pool.count();
+        return { count: getAllPools };
     });
 
     await fastify.listen({ port: 3333 });
