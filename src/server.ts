@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient({
@@ -15,6 +16,11 @@ async function bootstrap() {
         logger: true,
     });
 
+    await fastify.register(cors, {
+        // estou dizendo que qualquer aplicação pode acessar meu servidor
+        origin: true,
+    });
+
     // Abaixo criarei as rotas
     fastify.get('/pools/count', async () => {
         // O prisma já me mostra as minhas tabelas
@@ -22,7 +28,9 @@ async function bootstrap() {
         return { count: getAllPools };
     });
 
-    await fastify.listen({ port: 3333 });
+    // Esse host: '0.0.0.0' é só um detalhe para que meu server seja bem consumido no React
+    // e ReactNative
+    await fastify.listen({ port: 3333, host: '0.0.0.0' });
 }
 
 bootstrap();
