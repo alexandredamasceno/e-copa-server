@@ -5,6 +5,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// cria o diagrama de relacionamento do meu banco de dados.
+// 1º executo no terminal npm i prisma-erd-generator @mermaid-js/mermaid-cli -D
+// 2º Escrevo essas linhas de código abaixo
+// 3º Executo npx prisma generate que ele vai criar um arquivo .svg com o ERD do meu BD
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
