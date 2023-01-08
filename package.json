@@ -1,0 +1,32 @@
+{
+  "name": "e-copa-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandredamasceno/e-copa-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandredamasceno/e-copa-server/issues"
+  },
+  "homepage": "https://github.com/alexandredamasceno/e-copa-server#readme",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^9.2.2",
+    "prisma": "^4.8.0",
+    "prisma-erd-generator": "^1.2.4",
+    "tsx": "^3.12.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.2.0",
+    "@prisma/client": "^4.8.0",
+    "fastify": "^4.10.2"
+  }
+}
